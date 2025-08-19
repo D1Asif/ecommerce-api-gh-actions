@@ -1,4 +1,4 @@
-# Ecommerce API
+# Ecommerce API - Deployment with Github Actions in AWS EC2 using NGINX, PM2 
 A simple ecommerce API with product and order management built with Typescipt, Express, MongoDB atlas, Mongoose, Zod etc. Deployed API link: [Ecommerce API](https://ecommerce-api-orpin.vercel.app/)
 
 ## Technologies
