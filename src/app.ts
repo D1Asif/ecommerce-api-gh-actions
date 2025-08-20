@@ -12,7 +12,7 @@ app.use('/api/products', ProductRoutes);
 app.use('/api/orders', OrderRoutes);
 
 app.get('/', (req: Request, res: Response) => {
-    res.send('Welcome to the ecommerce API!')
+    res.send('Welcome to the E-commerce API!')
 })
 
 app.all('*', (req: Request, res: Response) => {
