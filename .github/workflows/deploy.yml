@@ -46,16 +46,20 @@ jobs:
                 EC2_USER: ${{ secrets.EC2_USER }}
               run: |
                 ssh "$EC2_USER@$EC2_HOST" 'bash -lc "
-                  # load fnm
-                  export PATH=\"$HOME/.fnm:$PATH\"
-                  eval \"$(fnm env)\" 
+                  # source .bashrc so fnm is loaded
+                  source $HOME/.bashrc
 
-                  # use the correct Node version
+                  # make sure fnm is initialized
+                  eval \"$(fnm env)\"
                   fnm use 21.7.1
 
+                  # go to app
                   cd ~/app
+
+                  # install production dependencies
                   npm ci --omit=dev
 
+                  # restart app with pm2
                   pm2 delete nodejs-app || true
                   pm2 start dist/server.js --name nodejs-app
                   pm2 save || true
