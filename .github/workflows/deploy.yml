@@ -57,21 +57,18 @@ jobs:
 
                 # Install production dependency on EC2
                 ssh $EC2_USER@$EC2_HOST "
-                  export PATH=\"$HOME/.fnm:\$PATH\"
-                  eval \"\$(fnm env)\"
-                  cd ~/app && npm install --frozen-lockfile
+                  source ~/.bashrc
+                  cd ~/app && npm install --omit=dev
                 "
 
                 # Stop existing PM2 process if it exists
                 ssh $EC2_USER@$EC2_HOST "
-                  export PATH=\"$HOME/.fnm:\$PATH\"
-                  eval \"\$(fnm env)\"
+                  source ~/.bashrc
                   pm2 delete nodejs-app || true
                 "
 
                 # Start the application with PM2
                 ssh $EC2_USER@$EC2_HOST "
-                  export PATH=\"$HOME/.fnm:\$PATH\"
-                  eval \"\$(fnm env)\"
+                  source ~/.bashrc
                   cd ~/app && pm2 start dist/server.js --name nodejs-app
                 "
