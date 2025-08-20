@@ -45,13 +45,8 @@ jobs:
                 EC2_HOST: ${{ secrets.EC2_HOST }}
                 EC2_USER: ${{ secrets.EC2_USER }}
               run: |
-                ssh "$EC2_USER@$EC2_HOST" 'bash -lc "
-                  # source .bashrc so fnm is loaded
-                  source $HOME/.bashrc
-
-                  # make sure fnm is initialized
-                  eval \"$(fnm env)\"
-                  fnm use 21.7.1
+                ssh $EC2_USER@$EC2_HOST "
+                  export PATH=$PATH:/run/user/1000/fnm_multishells/20608_1755685199074/bin
 
                   # go to app
                   cd ~/app
@@ -63,4 +58,4 @@ jobs:
                   pm2 delete nodejs-app || true
                   pm2 start dist/server.js --name nodejs-app
                   pm2 save || true
-                "'
+                "
