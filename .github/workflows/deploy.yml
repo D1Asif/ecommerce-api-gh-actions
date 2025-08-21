@@ -60,7 +60,7 @@ jobs:
                 ssh $EC2_USER@$EC2_HOST "echo \"$ENV_CONTENT\" > ~/app/.env"
 
                 ssh $EC2_USER@$EC2_HOST "
-                  export PATH=$PATH:/run/user/1000/fnm_multishells/20608_1755685199074/bin
+                  export PATH=$PATH:/run/user/1000/fnm_multishells/28745_1755751295816/bin
 
                   # go to app
                   cd ~/app
