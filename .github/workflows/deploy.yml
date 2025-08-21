@@ -13,7 +13,7 @@ jobs:
             - name: Install node.js
               uses: actions/setup-node@v4
               with:
-                node-version: 21.7.1
+                node-version: 22.18.0
             - name: Install dependencies
               run: npm install
             - name: Build
@@ -27,7 +27,7 @@ jobs:
             - name: Install node.js
               uses: actions/setup-node@v4
               with:
-                node-version: 21.7.1
+                node-version: 22.18.0
             - name: Install dependencies
               run: npm install
             - name: Build
@@ -60,7 +60,7 @@ jobs:
                 ssh $EC2_USER@$EC2_HOST "echo \"$ENV_CONTENT\" > ~/app/.env"
 
                 ssh $EC2_USER@$EC2_HOST "
-                  export PATH=$PATH:/run/user/1000/fnm_multishells/20608_1755685199074/bin
+                  export PATH="/home/ubuntu/.local/share/fnm/node-versions/v22.18.0/installation/bin:$PATH"
 
                   # go to app
                   cd ~/app
